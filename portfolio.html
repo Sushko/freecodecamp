@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+	<!-- Include bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+
+  <!-- Include Font Awesome -->
+  <link rel="stylesheet" href="css/font-awesome.css"/>
+
+  <!-- Include JQuery -->
+  <script src="js/jquery-3.2.1.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
+  <!-- Include bootstrap JavaScript -->
+  <script src="js/bootstrap-3.3.7.min.js"></script>
+  <script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $("li.page-scroll").click(function() {
+          $("li.page-scroll").removeClass("focusPage");
+          $(this).addClass("focusPage");
+        });
+
+        $("a[href^='#']:not([href='#']").on("click", function(e){
+          var anchor = $(this.hash);
+          $('html, body').stop().animate({
+            scrollTop: $(anchor).offset().top
+          }, 777);
+          e.preventDefault();
+          return false;
+        });
+
+});
+
+  </script>
+  <style>
+    body {
+      position: relative;
+      /*padding-top: 60px;*/
+      /*background-image: url('http://eskipaper.com/images/background-patterns-11.jpg');opacity:0.5;*/
+    }
+    .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+      font-size: 1.5em;
+      font-weight:bold;
+      background-color: transparent;
+    }
+
+    #portfolio {
+      padding: 50px 0 0 0;
+    }
+
+    #about {
+      padding: 50px 0 0 0;
+    }
+
+    #contact {
+      padding: 50px 0 0 0;
+    }
+
+    .transitionIt  {
+      -webkit-transition: all ease 0.9s;
+      -moz-transition: all ease 0.9s;
+      -o-transition: all ease 0.9s;
+      -ms-transition: all ease 0.9s;
+      transition: all ease 0.9s;
+    }
+    .transitionItFast  {
+      -webkit-transition: all ease 0.3s;
+      -moz-transition: all ease 0.3s;
+      -o-transition: all ease 0.3s;
+      -ms-transition: all ease 0.3s;
+      transition: all ease 0.3s;
+    }
+
+    .focusPage {
+      font-size:1.5em;
+      font-weight:bold;
+    }
+
+    .bodyContent{
+      border-style: solid;
+      border-color: #636c72;
+      border-radius: 2vmin;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .bg-pale-info{
+      background-color: #f0e6d2;
+    }
+
+    .profilePic {
+      border-color: #f0e6d2;
+      border-width: 5%;
+      border-style: solid;
+      border-radius: 50%;
+      width: 50%;
+    }
+
+/*.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s;
+  background-color: #56bddc;
+}*/
+
+  </style>
+</head>
+<body class="noselect" data-spy="scroll" data-target="#navbar" >
+  <div class="container-fluid">
+    <!-- navigation bar -->
+
+<nav id="navbar" class="nav navbar navbar-inverse navbar-fixed-top transitionIt">
+  <div class="container-fluid">
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#">Software Engineer</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li class="hidden active"><a href="#page-top"></a></li> -->
+        <li class="page-scroll"><a class="transitionItFast" href="#about">About</a></li>
+        <li class="page-scroll"><a class="transitionItFast" href="#portfolio">Portfolio</a></li>
+        <li class="page-scroll"><a class="transitionItFast" href="#contact">Contacts</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    <!-- About -->
+<section id="about">
+  <div class="container">
+    <h2 class="text-center"><i class="fa fa-user-o " aria-hidden="true"></i> About me</h2>
+      <br>
+      <div class="bodyContent bg-pale-info">
+
+
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+            <!-- https://cdn2.iconfinder.com/data/icons/software-development-glyph-black/2048/5438_-_Software_Developer-512.png -->
+            <!-- https://i.pinimg.com/originals/b5/f1/49/b5f1492497affd86d16eab516edd266c.png -->
+            <!-- http://d19le1r6oli276.cloudfront.net/assets/Developer_icon@2x-1c2b56f315624d45396a5afa694ff9569695be1ae01ced48beecc220a1409209.png -->
+            <!-- https://cdn3.iconfinder.com/data/icons/web-design-and-development-glyph-vol-1/64/web-development-glyph-04-512.png -->
+            <img src ="img/scrooge.jpg" alt="My profile image" title="Profile image" class="profilePic center-block">
+          </div>
+          <div class="col-xs-12 col-md-8">
+            <p class="lead">
+            Hi, I'm John Kennedy. </p>
+            <p class="lead">I've always had a knack with computers and have spent many years working in support roles. Now I am on a journey to become a developer.  I've been dabbling in programming since age 13 and have recently realised that the job of developer provides the ideal combination of techy nerdiness with creativity and problem solving to provide me the kind of job satisfaction I have always dreamed of. </p>
+            <p class="lead">I've a lot to learn but am excited by the challenges ahead.
+            </p>
+          </div> 
+        </div>
+
+
+      </div>
+  </div>
+</section>
+    <!-- Portfolio -->
+
+<section id="portfolio">
+  <div class="container">
+    <h2 class="text-center"><i class="fa fa-laptop " aria-hidden="true"></i> My portfolio</h2>
+    <br>
+    <div class="bodyContent bg-pale-info">
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <a href="https://pay.platimo.ua/" target="_blank">
+            <img src="img/scrooge.jpg" class="img-responsive" alt="PlatiMo!">
+          </a>
+          <h4>PlatiMo!</h4>
+          <p>Internet and Mobile payment service</p>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <a href="https://codepen.io/lex8/full/dZYerQ/" target="_blank">
+            <img src="img/scrooge.jpg" class="img-responsive" alt="Build a Tribute Page: Scrooge McDuck">
+          </a>
+          <h4>Build a Tribute Page</h4>
+          <p>Basic Front End Development Project</p>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <a href="https://codepen.io/lex8/full/pdEReP/" target="_blank">
+            <img src="img/scrooge.jpg" class="img-responsive" alt="Build a Personal Portfolio Webpage">
+          </a>
+          <h4>Build a Personal Portfolio Webpage</h4>
+          <p>Basic Front End Development Project</p>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <a href="https://codepen.io/beugelaar/pen/pyLMqB" target="_blank">
+            <img src="img/scrooge.jpg" class="img-responsive" alt="Stunning progect 4">
+          </a>
+          <h4>Stunning progect 4</h4>
+          <p>Coming Soon!</p>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <a href="https://codepen.io/beugelaar/pen/RaqEQe" target="_blank">
+            <img src="img/scrooge.jpg" class="img-responsive" alt="Stunning progect 5">
+          </a>
+          <h4>Stunning progect 5</h4>
+          <p>Coming Soon!</p>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <a href="https://codepen.io/beugelaar/pen/NrrMKN" target="_blank">
+            <img src="img/scrooge.jpg" class="img-responsive" alt="Stunning progect 6">
+          </a>
+          <h4>Stunning progect 6</h4>
+          <p>Coming Soon!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- Contacts -->
+
+<section id="contact">
+  <div class="container">
+    <h2 class="text-center"><i class="fa fa-envelope-o " aria-hidden="true"></i> Contact me</h2>
+      <br>
+<div class="bodyContent bg-pale-info">
+Screen was originally designed by Oliver Laumann and Carsten Bormann at the Technical University of Berlin and published in 1987.[1][2]
+Design criteria included VT100 emulation (including ANSI X3.64 (ISO 6429) and ISO 2022) and reasonable performance for heavy daily use when character-based terminals were still common. Later, the at-the-time novel feature of disconnection/reattachment was added.
+Around 1990, Laumann handed over maintenance of the code to Jürgen Weigert and Michael Schroeder at the University of Erlangen-Nuremberg, who later moved the project to the GNU Project and added features such as scrollback, split-screen, cut-and-paste, and screen sharing.[3]
+By 2014, development had slowed to a crawl. Wanting to change this, Amadeusz Sławiński volunteered to help. In response, Laumann granted him maintainership. Sławiński proceeded to put out the first new Screen release in half a decade. Because there were some unofficial "Screen 4.1" releases floating around the Internet, he called this new release "Screen 4.2.0".
+In May 2015, on openSUSE Conference, Jürgen Weigert invited Alexander Naumov to help to develop and maintain GNU screen. Two months later with Alex's help GNU screen 4.3.0 was released.
+Screen was originally designed by Oliver Laumann and Carsten Bormann at the Technical University of Berlin and published in 1987.[1][2]
+Design criteria included VT100 emulation (including ANSI X3.64 (ISO 6429) and ISO 2022) and reasonable performance for heavy daily use when character-based terminals were still common. Later, the at-the-time novel feature of disconnection/reattachment was added.
+Around 1990, Laumann handed over maintenance of the code to Jürgen Weigert and Michael Schroeder at the University of Erlangen-Nuremberg, who later moved the project to the GNU Project and added features such as scrollback, split-screen, cut-and-paste, and screen sharing.[3]
+By 2014, development had slowed to a crawl. Wanting to change this, Amadeusz Sławiński volunteered to help. In response, Laumann granted him maintainership. Sławiński proceeded to put out the first new Screen release in half a decade. Because there were some unofficial "Screen 4.1" releases floating around the Internet, he called this new release "Screen 4.2.0".
+In May 2015, on openSUSE Conference, Jürgen Weigert invited Alexander Naumov to help to develop and maintain GNU screen. Two months later with Alex's help GNU screen 4.3.0 was released.
+Screen was originally designed by Oliver Laumann and Carsten Bormann at the Technical University of Berlin and published in 1987.[1][2]
+Design criteria included VT100 emulation (including ANSI X3.64 (ISO 6429) and ISO 2022) and reasonable performance for heavy daily use when character-based terminals were still common. Later, the at-the-time novel feature of disconnection/reattachment was added.
+Around 1990, Laumann handed over maintenance of the code to Jürgen Weigert and Michael Schroeder at the University of Erlangen-Nuremberg, who later moved the project to the GNU Project and added features such as scrollback, split-screen, cut-and-paste, and screen sharing.[3]
+By 2014, development had slowed to a crawl. Wanting to change this, Amadeusz Sławiński volunteered to help. In response, Laumann granted him maintainership. Sławiński proceeded to put out the first new Screen release in half a decade. Because there were some unofficial "Screen 4.1" releases floating around the Internet, he called this new release "Screen 4.2.0".
+In May 2015, on openSUSE Conference, Jürgen Weigert invited Alexander Naumov to help to develop and maintain GNU screen. Two months later with Alex's help GNU screen 4.3.0 was released.
+</div>
+  </div>
+</section>
+  </div>
+</body>
+</html>
