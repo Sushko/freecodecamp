@@ -4,7 +4,6 @@
 
   <!-- Include google font -->
   <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Leckerli+One" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Delius+Swash+Caps" rel="stylesheet">
 	<!-- Include bootstrap -->
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -19,44 +18,86 @@
   <!-- Include bootstrap JavaScript -->
   <script src="js/bootstrap-3.3.7.min.js"></script>
   <script type="text/javascript">
-    function quoteGenerate(){
-      var quotes = [
-        {
-          quote : 'quote1', 
-          author : 'author1', 
-          url : 'url1'
-        },
-        {
-          quote : 'quote2', 
-          author : 'author2', 
-          url : 'url2'
-        },
-        {
-          quote : 'quote3', 
-          author : 'author3', 
-          url : 'url3'
-        },
-        {
-          quote : 'quote4', 
-          author : 'author4', 
-          url : 'url4'
-        }
-      ];
-      return quotes;
-    }
-
+    var currentQuote = '';
+    var currentAuthor = '';
+  function quoteGenerate(){
+    var quotes = [
+      {
+        quote : "A wise ruler ought never to keep faith when by doing so it would be against his interests.",
+        author : "Niccolo Machiavelli",
+        url : "https://en.wikipedia.org/wiki/Niccol%C3%B2_Machiavelli"
+      },
+      {
+        quote : "There is more treasure in books than in all the pirate's loot on Treasure Island.",
+        author : "Walt Disney",
+        url : "https://en.wikipedia.org/wiki/Walt_Disney"
+      },
+      {
+        quote : 'To study and not think is a waste. To think and not study is dangerous.',
+        author : 'Confucius',
+        url : 'https://en.wikipedia.org/wiki/Confucius'
+      },
+      {
+        quote : "Happiness is not something ready made. It comes from your own actions.",
+        author : "Dalai Lama",
+        url : "https://en.wikipedia.org/wiki/Dalai_Lama"
+      },
+      {
+        quote : "One today is worth two tomorrows. ",
+        author : "Benjamin Franklin",
+        url : "https://en.wikipedia.org/wiki/Benjamin_Franklin"
+      },
+      {
+        quote : " Experience is simply the name we give our mistakes. ",
+        author : "Oscar Wilde",
+        url : "https://en.wikipedia.org/wiki/Oscar_Wilde"
+      },
+      {
+        quote : "You can fool some of the people all of the time, and all of the people some of the time, but you can not fool all of the people all of the time.",
+        author : "Abraham Lincoln",
+        url : "https://en.wikipedia.org/wiki/Abraham_Lincoln"
+      },
+      {
+        quote : "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment. ",
+        author : "Buddha",
+        url : "https://en.wikipedia.org/wiki/Gautama_Buddha"
+      }
+    ];
+    var quote = Math.floor(Math.random() * quotes.length);
+    return quotes[quote];
+  }
+  function fillGaps (){
+      var q = quoteGenerate();
+      currentAuthor = q.author;
+      currentQuote = q.quote;
+      $( "#quote" ).html(q.quote);
+      $( "#author" ).html('<a href="' + q.url + '" target="_blank">' + q.author + '</a>');    
+  }
   $(document).ready(function(){
 
     $("#quote_box").fadeIn(600);
-  
+    fillGaps();
+
+    $( "#next" ).click(function() {
+      $("#quote_box").fadeOut(600);
+      setTimeout(fillGaps, 600);
+      $("#quote_box").fadeIn(600);
+    });
+    $("#tweet").attr('href', 'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('"' + currentQuote + '" ' + currentAuthor));
+    // $( "#tweet" ).click(function() {
+    //     openURL('https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('"' + currentQuote + '" ' + currentAuthor));
+    // });
+
   });
   $( function() {
     $( "#quote_box" ).draggable();
   });
+
   </script>
   <style>
     body {
       position: relative;
+      /*max-width: 1000px;*/
       /*padding-top: 60px;*/
       background-image: url('http://eskipaper.com/images/background-patterns-11.jpg');opacity:0.9;
     }
@@ -113,8 +154,8 @@
               <i class="fa fa-quote-left" aria-hidden="true"></i>
             </div>
             <div class="col-xs-10">
-              <p class="quote lead">A software engineer is a person who applies the principles of software engineering to the design, development, maintenance, testing, and evaluation of the software that make computers or other devices containing software work. </p>
-              <p class="author lead">Author</p>
+              <p id="quote" class="quote lead">A software engineer is a person who applies the principles of software engineering to the design, development, maintenance, testing, and evaluation of the software that   computers or other devices containing software work. </p>
+              <p id="author" class="author lead">Author</p>
               <!-- https://s33.postimg.org/wnit8d29b/portfolio.png -->
               <!-- <img draggable="false" src ="img/portfolio.png" alt="My profile image" title="Profile image" class="profilePic center-block"> -->
             </div>
@@ -124,12 +165,12 @@
           </div>
           <div class="row">
             <div class="col-xs-6 col-md-4">
-              <button class="btn btn-info pull-left"><i class="fa fa-2x fa-twitter" aria-hidden="true"></i></button>
+              <a id="tweet" class="btn btn-info pull-left" target="_blank"><i class="fa fa-2x fa-twitter" aria-hidden="true"></i></a>
             </div>
             <div class="col-xs-0 col-md-4">
             </div>
             <div class="col-xs-6 col-md-4">
-              <button class="btn btn-danger pull-right"><i class="fa fa-2x fa-forward" aria-hidden="true"></i></button>
+              <button id="next" class="btn btn-danger pull-right"><i class="fa fa-2x fa-forward" aria-hidden="true"></i></button>
             </div>
           </div>
         </div>
