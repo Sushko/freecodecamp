@@ -1,3 +1,18 @@
+<!-- https://www.wallpaperup.com/uploads/wallpapers/2012/08/29/11950/800e2255ace4731d8b3f256057c8a386.jpg
+https://i0.wp.com/carteretspeedway.com/wp-content/uploads/2016/05/rain.jpg
+
+http://cdn.weatheravenue.com/img/background/background.jpg
+
+Day icon  Night icon  Description
+01d.png   01n.png   clear sky
+02d.png   02n.png   few clouds
+03d.png   03n.png   scattered clouds
+04d.png   04n.png   broken clouds
+09d.png   09n.png   shower rain
+10d.png   10n.png   rain
+11d.png   11n.png   thunderstorm
+13d.png   13n.png   snow
+50d.png   50n.png   mist -->
 <!-- http://erikflowers.github.io/weather-icons/ -->
 <!DOCTYPE html>
 <html>
@@ -21,15 +36,41 @@
   <!-- Include bootstrap JavaScript -->
   <script src="js/bootstrap-3.3.7.min.js"></script>
   <script type="text/javascript">
-
+      var back =
+      {
+        // "01d": "https://cdn.pixabay.com/photo/2016/09/23/15/12/church-1689911_960_720.jpg",// day clear sky
+        "01n": "https://i.ytimg.com/vi/_WchavsZOuc/maxresdefault.jpg",// night clear sky
+        "02d": "http://cdn.weatheravenue.com/img/background/background.jpg",// day few clouds
+        // "02n": "http://www.drahtphotography.com/wp-content/uploads/2015/05/sampleIMG_3642.jpg",// night few clouds
+        "03d": "https://i.ytimg.com/vi/z2UDZMu2GLU/maxresdefault.jpg",// day scattered clouds
+        "03n": "https://www.wallpapersbrowse.com/images/8n/8ncnnaz.jpg",// night scattered clouds
+        // "04d": "https://img00.deviantart.net/6364/i/2017/030/4/1/broken_clouds_by_kevintheman-dax9bd4.jpg",// day broken clouds
+        // "04n": "https://s-media-cache-ak0.pinimg.com/originals/36/0f/f0/360ff076c9dff58b067937278dc87e3f.jpg",// night broken clouds
+        "09d": "https://www.walldevil.com/wallpapers/a88/heavy-rain-images-nature-wallpaper.jpg",// day shower rain
+        "09n": "https://i.ytimg.com/vi/J5OSRpRyl6g/maxresdefault.jpg",// night shower rain
+        // "10d": "https://www.scienceabc.com/wp-content/uploads/2015/05/Walking-in-Rain.jpg",// day rain
+        "10n": "https://i0.wp.com/carteretspeedway.com/wp-content/uploads/2016/05/rain.jpg",// night rain
+        // "11d": "https://www.mja.com.au/sites/default/files/2017-09/thunderstormasthma.jpg",// day thunderstorm
+        // "11n": "https://www.sciencedaily.com/images/2016/08/160831103023_1_900x600.jpg",// night thunderstorm
+        // "13d": "http://bipbap.ru/wp-content/uploads/2017/08/depositphotos_7338272-Beautiful-winter-landscape-with-snow-covered-trees.jpg",// day snow
+        "13n": "https://www.walldevil.com/wallpapers/a42/wallpapers-winter-reports-wallpaper-forecast-mac-weather-background-images.jpg",// night snow
+        // "50d": "https://vesti-ukr.com/img/article/2201/73_main.jpg",// day mist
+        // "50n": "http://bestpozitiv.net/wp-content/uploads/2014/09/chto-prinosit-tuman-05.jpg" // night mist
+      };
   $(document).ready(function(){
 
     $("#quote_box").fadeIn(600);
+    var picImg;
     $.get("http://ipinfo.io", function(response) {
       $.getJSON("https://fcc-weather-api.glitch.me/api/current?lat="+response.loc.substring(0,response.loc.indexOf(","))+"&lon="+response.loc.substring(response.loc.indexOf(",")+1), function(json) {
         var sunrise = new Date(json.sys.sunrise*1000);
         var sunset = new Date(json.sys.sunset*1000);
+        picImg = json["weather"][0].icon;
         $("#img").html("<img class='enlarge' src="+json["weather"][0].icon+">");
+        picImg = picImg.substring(picImg.indexOf(".png")-3, picImg.indexOf(".png"));
+        // $('body').css('background-image', 'url("'+back[picImg]+'")');
+        $('body').css('background-image', 'url("'+back["01d"]+'")');
+        //$('body').css('background-image').
         $("#temp").html(json.main.temp + ' &#x2103');
         $("#pres").html(json.main.pressure + ' hPa');
         $("#humi").html(json.main.humidity + ' %');
@@ -148,7 +189,9 @@
       position: relative;
       /*max-width: 1000px;*/
       /*padding-top: 60px;*/
-      background-image: url('http://eskipaper.com/images/background-patterns-11.jpg');opacity:0.9;
+      background-image: url('http://cdn.weatheravenue.com/img/background/background.jpg');opacity:0.9;
+      background-repeat:no-repeat;
+      /*background-size:cover;*/
     }
 
     #panel {
@@ -180,8 +223,12 @@
       transform-origin: 0 0;
       padding-top: 30px;
     }
-
+/*div {
+  border: solid 1px;
+  border-color: black;
+}*/
   </style>
+}
 </head>
 <body data-spy="scroll" data-target="#navbar" >
   <div class="container-fluid">
@@ -195,43 +242,43 @@
             </div>
             <div class="col-xs-10">
               <div class="row">
-                <div class="col-xs-8">Temperature:</div>
+                <div class="col-xs-4">Temperature:</div>
                 <div id="temp" class="col-xs-4"></div>
               </div>
               <div class="row">
-                <div class="col-xs-8">Preasure:</div>
+                <div class="col-xs-4">Preasure:</div>
                 <div id="pres" class="col-xs-4"></div>
               </div>
               <div class="row">
-                <div class="col-xs-8">Humidity:</div>
+                <div class="col-xs-4">Humidity:</div>
                 <div id="humi" class="col-xs-4"></div>
               </div>
               <div class="row">
-                <div class="col-xs-8">Forecast:</div>
+                <div class="col-xs-4">Forecast:</div>
                 <div id="fcst" class="col-xs-4"></div>
               </div>
               <div class="row">
-                <div class="col-xs-8">Clouds:</div>
+                <div class="col-xs-4">Clouds:</div>
                 <div id="clds" class="col-xs-4"></div>
               </div>
               <div class="row">
-                <div class="col-xs-8">Wind:</div>
+                <div class="col-xs-4">Wind:</div>
                 <div id="wind" class="col-xs-4"></div>
               </div>
               <div class="row">
-                <div class="col-xs-8">Visibility:</div>
+                <div class="col-xs-4">Visibility:</div>
                 <div id="visb" class="col-xs-4"></div>
               </div>
               <div class="row">
-                <div class="col-xs-8">Sunrise:</div>
+                <div class="col-xs-4">Sunrise:</div>
                 <div id="snrs" class="col-xs-4"></div>
               </div>
               <div class="row">
-                <div class="col-xs-8">Sunset:</div>
+                <div class="col-xs-4">Sunset:</div>
                 <div id="snst" class="col-xs-4"></div>
               </div>
               <div class="row">
-                <div class="col-xs-8">City:</div>
+                <div class="col-xs-4">City:</div>
                 <div id="city" class="col-xs-4"></div>
               </div>
             </div>
